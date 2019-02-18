@@ -1,69 +1,77 @@
 package com.infoshareacademy;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.Scanner;
 
 public class Person {
 
+    public  String getName() {
+        return name;
+    }
 
-    public static void writeOfname() throws FileNotFoundException {
+    public void setName(){
         Scanner writeOfnameSc = new Scanner(System.in);
         System.out.println("****************************");
         System.out.println("Write yours name: ");
-        String name = writeOfnameSc.nextLine();
+        name = writeOfnameSc.nextLine();
         System.out.println("Yours name: " + name);
-        PrintWriter zapis = new PrintWriter("dane.txt");
-        zapis.println("name: " + name);
-        zapis.close();
-
     }
 
+    public String getSurname() {
+        return surname;
+    }
 
-    public static void writeOfsurname() throws FileNotFoundException {
+    public void setSurname() {
         Scanner writeOfsurnameSc = new Scanner(System.in);
         System.out.println("****************************");
         System.out.println("Write yours surname: ");
-        String surname = writeOfsurnameSc.nextLine();
+        surname = writeOfsurnameSc.nextLine();
         System.out.println("Yours surname: " + surname);
-        PrintWriter zapisOne = new PrintWriter("dane.txt");
-        zapisOne.println("Surname: " + surname);
-        zapisOne.close();
-
-
+    }
+    public String getGender() {
+        return gender;
     }
 
-    public static void isMaleorFamle() throws FileNotFoundException {
+    public void setGender() {
         Scanner isMaleorFamle = new Scanner(System.in);
         System.out.println("****************************");
         System.out.println("Choice yours Gender (F/M): ");
-        String isMaleorFamleSc = isMaleorFamle.nextLine();
-        if (isMaleorFamleSc.equalsIgnoreCase("F")) {
+        gender = isMaleorFamle.nextLine();
+        if (gender.equalsIgnoreCase("F")) {
             System.out.println("Famle");
             System.out.println("****************************");
-        } else if (isMaleorFamleSc.equalsIgnoreCase("M")) {
+        } else if (gender.equalsIgnoreCase("M")) {
             System.out.println("Male");
             System.out.println("****************************");
         }
-        PrintWriter zapisTwo = new PrintWriter("dane.txt");
-        zapisTwo.println(isMaleorFamleSc);
-        zapisTwo.close();
-
-
     }
 
-    public static void writeEmail() throws FileNotFoundException {
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail() {
         Scanner emailSc = new Scanner(System.in);
         System.out.println("Write your e-mail (only first part): ");
-        String write = emailSc.nextLine();
-        System.out.println("Your e-mail: " + write + "@gmail.com");
+        email = emailSc.nextLine();
+        System.out.println("Your e-mail: " + email);
         System.out.println("**********************");
-        PrintWriter zapisThree = new PrintWriter("dane.txt");
-        zapisThree.println(write);
-        zapisThree.close();
-
     }
+
+    public void saveOnDisk() throws IOException {
+       FileWriter fileWriter = new FileWriter("dane.txt");
+       fileWriter.write(name);
+       fileWriter.write(surname);
+       fileWriter.write(email);
+       fileWriter.write(gender);
+       fileWriter.close();
+    }
+
+
+    private  String name;
+    private  String surname;
+    private  String gender;
+    private  String email;
 
 
 }
