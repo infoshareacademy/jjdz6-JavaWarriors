@@ -1,12 +1,15 @@
 package com.infoshareacademy;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class Menu {
 
 
-    public static void menu() {
+
+    public static void menu() throws FileNotFoundException {
         System.out.println("         ********           ");
         System.out.println("******** MENU-APP **********");
         System.out.println("* 1.  --  Zarejstruj się   -- * "); //Person.java
@@ -23,10 +26,14 @@ public class Menu {
                     Person.writeOfsurname();
                     Person.isMaleorFamle();
                     Person.writeEmail();
+                    break;
                 case 2:
-
+                  //metoda logowania//
+                    break;
                 case 3:
-
+                    FreeUser.writeOfname();
+                    FreeUser.writeEmail();
+                    break;
                 case 0:
                     break;
 
