@@ -8,7 +8,6 @@ import java.util.Scanner;
 public class Menu {
 
 
-
     public static void menu() throws FileNotFoundException {
         System.out.println("         ********           ");
         System.out.println("******** MENU-APP **********");
@@ -19,7 +18,8 @@ public class Menu {
         System.out.println("****************************");
         System.out.println("Wybierz z menu: ");
         Scanner scanner = new Scanner(System.in);
-        Integer[] tabOfnumebr = {0, 1, 2, 3, 4}; Integer numberOfmenu = scanner.nextInt();
+        Integer[] tabOfnumebr = {0, 1, 2, 3, 4};
+        Integer numberOfmenu = scanner.nextInt();
             switch (tabOfnumebr[numberOfmenu]) {
                 case 1:
                     Person.writeOfname();
@@ -28,7 +28,7 @@ public class Menu {
                     Person.writeEmail();
                     break;
                 case 2:
-                  //metoda logowania//
+                    //metoda logowania//
                     break;
                 case 3:
                     FreeUser.writeOfname();
@@ -37,7 +37,9 @@ public class Menu {
                 case 0:
                     break;
 
+
             }
 
         }
     }
+

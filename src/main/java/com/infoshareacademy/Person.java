@@ -15,25 +15,26 @@ public class Person {
         String name = writeOfnameSc.nextLine();
         System.out.println("Yours name: " + name);
         PrintWriter zapis = new PrintWriter("dane.txt");
-        zapis.println("name: " +name);
+        zapis.println("name: " + name);
         zapis.close();
+
     }
 
 
-
-    public static void writeOfsurname() throws FileNotFoundException{
+    public static void writeOfsurname() throws FileNotFoundException {
         Scanner writeOfsurnameSc = new Scanner(System.in);
         System.out.println("****************************");
         System.out.println("Write yours surname: ");
-        String name = writeOfsurnameSc.nextLine();
-        System.out.println("Yours surname: " + name);
-        PrintWriter zapis = new PrintWriter("dane.txt");
-        zapis.println(writeOfsurnameSc);
-        zapis.close();
+        String surname = writeOfsurnameSc.nextLine();
+        System.out.println("Yours surname: " + surname);
+        PrintWriter zapisOne = new PrintWriter("dane.txt");
+        zapisOne.println("Surname: " + surname);
+        zapisOne.close();
+
 
     }
 
-    public static void isMaleorFamle()throws FileNotFoundException {
+    public static void isMaleorFamle() throws FileNotFoundException {
         Scanner isMaleorFamle = new Scanner(System.in);
         System.out.println("****************************");
         System.out.println("Choice yours Gender (F/M): ");
@@ -45,9 +46,10 @@ public class Person {
             System.out.println("Male");
             System.out.println("****************************");
         }
-        PrintWriter zapis = new PrintWriter("dane.txt");
-        zapis.println(isMaleorFamleSc);
-        zapis.close();
+        PrintWriter zapisTwo = new PrintWriter("dane.txt");
+        zapisTwo.println(isMaleorFamleSc);
+        zapisTwo.close();
+
 
     }
 
@@ -57,8 +59,11 @@ public class Person {
         String write = emailSc.nextLine();
         System.out.println("Your e-mail: " + write + "@gmail.com");
         System.out.println("**********************");
-        PrintWriter zapis = new PrintWriter("dane.txt");
-        zapis.println(emailSc);
-        zapis.close();
+        PrintWriter zapisThree = new PrintWriter("dane.txt");
+        zapisThree.println(write);
+        zapisThree.close();
+
     }
+
+
 }
