@@ -4,8 +4,6 @@ import java.io.*;
 import java.util.Scanner;
 
 public class Menu {
-
-
     public static void menu() throws IOException {
         System.out.println("         ********           ");
         System.out.println("******** MENU-APP **********");
@@ -16,33 +14,42 @@ public class Menu {
         System.out.println("****************************");
         System.out.println("Wybierz z menu: ");
         Scanner scanner = new Scanner(System.in);
-        Integer[] tabOfnumebr = {0, 1, 2, 3, 4};
-        Integer numberOfmenu = scanner.nextInt();
-            switch (tabOfnumebr[numberOfmenu]) {
-                case 1:
-                    Person person = new Person();
-                    person.setName();
-                    person.setSurname();
-                    person.setGender();
-                    person.setEmail();
-                    person.saveOnDisk();
-                    break;
-                case 2:
-                    //metoda logowania//
-                    break;
-                case 3:
-                   // FreeUser.writeOfname();
-                   // FreeUser.writeEmail();
-                    break;
-                case  4:
-                case 0:
-                    break;
+        Integer numberOfMenuSc;
+        boolean isNot = true;
+        while (isNot) {
+            scanner = new Scanner(System.in);
+            try {
+                switch (scanner.nextInt()) {
+                    case 1:
+                        Person person = new Person();
+                        person.setName();
+                        person.setSurname();
+                        person.setGender();
+                        person.setEmail();
+                        // person.saveOnDisk();
+                        break;
+                    case 2:
+                        //metoda logowania//
+                        break;
+                    case 3:
+                        // FreeUser.writeOfname();
+                        // FreeUser.writeEmail();
+                        break;
+                    case 4:
+                        break;
+                    case 5:
+                        break;
                     default:
                         System.out.println("koniec");
 
-
+                }
+                break;
+            } catch (Exception e) {
+                System.out.printf("!!ERROR!!");
+                System.out.println("Wpisz jeszcze raz");
             }
 
         }
     }
 
+}

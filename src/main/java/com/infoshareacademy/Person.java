@@ -1,5 +1,4 @@
 package com.infoshareacademy;
-
 import java.io.*;
 import java.util.Scanner;
 
