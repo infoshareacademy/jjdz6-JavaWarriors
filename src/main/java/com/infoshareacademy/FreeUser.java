@@ -2,5 +2,13 @@ package com.infoshareacademy;
 
 public class  FreeUser extends Person {
 
-    // Dziedziczenie, ale w metododzie: "BRAK MOŻLIWOŚCI ZAPISU DO BAZY DANYCH/PLIKU"
+    @Override
+    public void setName() {
+        super.setName();
+    }
+
+    @Override
+    public void setEmail() {
+        super.setEmail();
+    }
 }

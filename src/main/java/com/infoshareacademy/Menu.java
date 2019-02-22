@@ -32,8 +32,9 @@ public class Menu {
                         //metoda logowania//
                         break;
                     case 3:
-                        // FreeUser.writeOfname();
-                        // FreeUser.writeEmail();
+                       FreeUser freeUser = new FreeUser();
+                       freeUser.setName();
+                       freeUser.setEmail();
                         break;
                     case 4:
                         break;
