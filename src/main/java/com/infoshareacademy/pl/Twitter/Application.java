@@ -1,19 +1,11 @@
-package Twitter;
+package com.infoshareacademy.pl.Twitter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import twitter4j.DirectMessage;
-import twitter4j.Query;
-import twitter4j.QueryResult;
-import twitter4j.StallWarning;
-import twitter4j.Status;
-import twitter4j.StatusDeletionNotice;
-import twitter4j.StatusListener;
-import twitter4j.Twitter;
-import twitter4j.TwitterException;
-import twitter4j.TwitterFactory;
-import twitter4j.TwitterStream;
-import twitter4j.TwitterStreamFactory;
+import twitter4j.*;
 import twitter4j.conf.ConfigurationBuilder;
 
 public class Application {
@@ -22,16 +14,17 @@ public class Application {
         /**
          * if not using properties file, we can set access token by following way
          */
-//		ConfigurationBuilder cb = new ConfigurationBuilder();
-//		cb.setDebugEnabled(true)
-//		  .setOAuthConsumerKey("//TODO")
-//		  .setOAuthConsumerSecret("//TODO")
-//		  .setOAuthAccessToken("//TODO")
-//		  .setOAuthAccessTokenSecret("//TODO");
-//		TwitterFactory tf = new TwitterFactory(cb.build());
-//		Twitter twitter = tf.getSingleton();
+        /*		ConfigurationBuilder cb = new ConfigurationBuilder();
+        cb.setDebugEnabled(true)
+                .setJSONStoreEnabled(true)
+                .setOAuthConsumerKey("cSsvIzyZhzypbCoyaKk8f9y1D")
+                .setOAuthConsumerSecret("5gUcBBhk1RXZRa3UOLHbgJhl7ry3tbkWaIN1sB1220LZUxAC6D")
+                .setOAuthAccessToken("1099024186377453570-t6kKV6pykUO5v3Yuht3vVbnCHHKf4I")
+                .setOAuthAccessTokenSecret("C5VAj1uOvymyAV09hGs7Fb8oPlRZs7s9OiIVn4uck4edq");*/
+        TwitterFactory tf = new TwitterFactory();
+        Twitter twitter = tf.getInstance();
 
-        Twitter twitter = TwitterFactory.getSingleton();
+        //Twitter twitter = TwitterFactory.getInstance();
         return twitter;
 
     }
@@ -56,7 +49,7 @@ public class Application {
         return message.getText();
     }
 
-    /*public static List<String> searchtweets() throws TwitterException {
+    public static List<String> searchtweets() throws TwitterException {
         Twitter twitter = getTwitterinstance();
         Query query = new Query("source:twitter4j baeldung");
         QueryResult result = twitter.search(query);
@@ -65,10 +58,15 @@ public class Application {
                 item -> item.getText()).collect(
                 Collectors.toList());
     }
-*/
-    public static void streamFeed() {
 
-        StatusListener listener = new StatusListener() {
+    public static void streamFeed() throws FileNotFoundException {
+
+        StatusListener listener = new StatusListener(){
+
+            File file = new File("tweets.txt");
+            PrintWriter saveFile = new PrintWriter("tweets.txt");
+
+            int tweetCounter = 0;
 
             @Override
             public void onException(Exception e) {
@@ -77,7 +75,7 @@ public class Application {
 
             @Override
             public void onDeletionNotice(StatusDeletionNotice arg) {
-                System.out.println("Got a status deletion notice id:" + arg.getStatusId());
+                //System.out.println("Got a status deletion notice id:" + arg.getStatusId());
             }
 
             @Override
@@ -92,7 +90,19 @@ public class Application {
 
             @Override
             public void onStatus(Status status) {
-                System.out.println(status.getUser().getName() + " : " + status.getText());
+                //System.out.println(status.getUser().getName() + " : " + status.getText());
+                //System.out.println(status.getUser().getName() + " : " + status.getText() +status.getLang()+ status.getSource()+status.getCreatedAt());
+                String rawJSON = TwitterObjectFactory.getRawJSON(status);
+                if (tweetCounter < 50) {
+                    System.out.println(rawJSON);
+                    saveFile.println(rawJSON);
+                    tweetCounter++;
+                } else {
+                    saveFile.close();
+
+
+
+                }
             }
 
             @Override
@@ -105,7 +115,9 @@ public class Application {
 
         twitterStream.addListener(listener);
 
-        twitterStream.sample();
+        twitterStream.sample("pl");
+        //twitterStream.shutdown();
 
     }
+
 }
