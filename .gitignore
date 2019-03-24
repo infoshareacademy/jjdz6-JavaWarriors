@@ -3,4 +3,4 @@ target/
 .idea
 *.iml
 .attach_pid*
-
+twitter4j.properties
