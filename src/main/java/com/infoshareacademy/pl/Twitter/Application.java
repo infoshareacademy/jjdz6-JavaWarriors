@@ -5,8 +5,15 @@ import java.io.PrintWriter;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
+import com.google.gson.Gson;
+import twitter4j.util.*;
 import twitter4j.*;
-import twitter4j.conf.ConfigurationBuilder;
+import twitter4j.GeoLocation;
+import twitter4j.api.*;
+import twitter4j.conf.*;
+import twitter4j.json.*;
+import twitter4j.auth.*;
 
 public class Application {
 
@@ -15,12 +22,12 @@ public class Application {
          * if not using properties file, we can set access token by following way
          */
         /*		ConfigurationBuilder cb = new ConfigurationBuilder();
-        cb.setDebugEnabled(true)
-                .setJSONStoreEnabled(true)
-                .setOAuthConsumerKey("cSsvIzyZhzypbCoyaKk8f9y1D")
-                .setOAuthConsumerSecret("5gUcBBhk1RXZRa3UOLHbgJhl7ry3tbkWaIN1sB1220LZUxAC6D")
-                .setOAuthAccessToken("1099024186377453570-t6kKV6pykUO5v3Yuht3vVbnCHHKf4I")
-                .setOAuthAccessTokenSecret("C5VAj1uOvymyAV09hGs7Fb8oPlRZs7s9OiIVn4uck4edq");*/
+//        cb.setDebugEnabled(true)
+//                .setJSONStoreEnabled(true)
+//                .setOAuthConsumerKey("cSsvIzyZhzypbCoyaKk8f9y1D")
+//                .setOAuthConsumerSecret("5gUcBBhk1RXZRa3UOLHbgJhl7ry3tbkWaIN1sB1220LZUxAC6D")
+//                .setOAuthAccessToken("1099024186377453570-t6kKV6pykUO5v3Yuht3vVbnCHHKf4I")
+//                .setOAuthAccessTokenSecret("C5VAj1uOvymyAV09hGs7Fb8oPlRZs7s9OiIVn4uck4edq");*/
         TwitterFactory tf = new TwitterFactory();
         Twitter twitter = tf.getInstance();
 
@@ -90,12 +97,20 @@ public class Application {
 
             @Override
             public void onStatus(Status status) {
+
+                //GeoLocation loc = status.getGeoLocation();
                 //System.out.println(status.getUser().getName() + " : " + status.getText());
+
                 //System.out.println(status.getUser().getName() + " : " + status.getText() +status.getLang()+ status.getSource()+status.getCreatedAt());
+                //FilterQuery filter = new FilterQuery();
+                //filter.locations(loc);
                 String rawJSON = TwitterObjectFactory.getRawJSON(status);
+                Gson gson = new Gson();
                 if (tweetCounter < 50) {
-                    System.out.println(rawJSON);
+                   // System.out.println(rawJSON);
                     saveFile.println(rawJSON);
+                    Tweet obj2 = gson.fromJson(rawJSON, Tweet.class);
+                    System.out.println("Created at: " + obj2.getCreatedAt() + ", id: " + obj2.getId() + "text: " + obj2.getText() + ", user_name: " + obj2.getUser().getName());
                     tweetCounter++;
                 } else {
                     saveFile.close();
@@ -114,8 +129,26 @@ public class Application {
         TwitterStream twitterStream = new TwitterStreamFactory().getInstance();
 
         twitterStream.addListener(listener);
+        //GeoLocation geoLocation = new GeoLocation(54.35774,18.62987);
+        //Query.Unit unit = Query.KILOMETERS; // or Query.MILES;
+        //query.setGeoCode(location, 10, unit);
+        double[][] boundingBox= {
+                {
+                        54.2721, 18.3804
 
-        twitterStream.sample("pl");
+                }
+                , {
+                54.4674, 18.7811,
+            }
+
+        };
+
+        FilterQuery filterLocation = new FilterQuery();
+        filterLocation.locations(boundingBox);
+
+
+        twitterStream.sample();
+                //filter(filterLocation);
         //twitterStream.shutdown();
 
     }
