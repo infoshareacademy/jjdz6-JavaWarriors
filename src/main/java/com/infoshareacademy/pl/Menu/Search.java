@@ -17,8 +17,9 @@ public class Search {
                     break;
                 case 2:
                     SerachGeoLocal.searchOfGeo();
-                default:
-                    System.out.println("");
+                break;
+                case 3:
+
 
 
             }
