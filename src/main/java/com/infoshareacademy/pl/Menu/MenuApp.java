@@ -27,7 +27,7 @@ import java.util.List;
 
 public class MenuApp {
     public static void main(String[] args) throws IOException, TwitterException {
-       SerachGeoLocal.searchOfGeo();
+      Menu.menu();
 
 
     }
