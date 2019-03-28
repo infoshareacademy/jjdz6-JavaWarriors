@@ -9,7 +9,8 @@ public class MenuApp {
     public static void main(String[] args) throws IOException, TwitterException {
 
      // Menu.menu();
-      AddToWrite.toWrite();
+    //  AddToWrite.toWrite();
+        ReadFromFile.readFromFile();
 
 
     }

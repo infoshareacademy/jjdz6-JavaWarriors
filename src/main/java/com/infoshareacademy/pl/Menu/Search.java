@@ -10,18 +10,15 @@ public class Search {
         System.out.println("2: Search GeoLocal2");
         boolean isNot = true;
         while (isNot) {
-           Scanner scanner = new Scanner(System.in);
+            Scanner scanner = new Scanner(System.in);
             switch (scanner.nextInt()) {
                 case 1:
                     SearchKeyWord.searchForKeyWorld();
                     break;
                 case 2:
                     SerachGeoLocal.searchOfGeo();
-                break;
+                    break;
                 case 3:
-
-
-
 
             }
 

@@ -11,7 +11,6 @@ public class Menu {
         System.out.println("******** MENU-APP **********");
         System.out.println("* 1.  -- Search     --    * "); //Search.java
         System.out.println("* 2.  -- SingIn     --    * "); //SignInForm.java
-        System.out.println("* 3.  -- Free User  --    * "); //FreeUserform.java
         System.out.println("****************************");
         System.out.println("Wybierz z menu: ");
         Scanner scanner;
@@ -37,11 +36,6 @@ public class Menu {
             }
 
         }
-
-
-
-
-
 
 
     }

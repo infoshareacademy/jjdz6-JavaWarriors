@@ -7,7 +7,7 @@ public class AddToWrite {
 
     public static void toWrite() {
         try {
-            FileWriter addToWrite = new FileWriter("fileToSave.txt",true);
+            FileWriter addToWrite = new FileWriter("fileToSave.txt", true);
             addToWrite.write(SearchKeyWord.searchForKeyWorld());
             addToWrite.close();
             System.out.println("Successfully wrote to the file.");
