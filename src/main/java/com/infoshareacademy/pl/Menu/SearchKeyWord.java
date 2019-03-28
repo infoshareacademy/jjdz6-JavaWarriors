@@ -5,12 +5,12 @@ import twitter4j.Place;
 import twitter4j.Query;
 import twitter4j.RateLimitStatus;
 
+import java.util.Scanner;
+
 public class SearchKeyWord {
-    public static void searchForKeyWorld () {
-        Query query = new Query();
-
-
-
+    public static String searchForKeyWorld() {
+        Scanner forKeyWorld = new Scanner(System.in);
+        return forKeyWorld.nextLine();
 
     }
 }

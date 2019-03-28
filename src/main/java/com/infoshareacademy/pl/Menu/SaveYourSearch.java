@@ -8,8 +8,23 @@ import java.io.IOException;
 import java.nio.file.Files;
 
 public class SaveYourSearch {
+    public static void saveYourSearch() {
+        try {
+            File fileSaveYourSearch = new File("fileToSave.txt");
+            if (fileSaveYourSearch.createNewFile()) {
+                System.out.println("File created: " + fileSaveYourSearch.getName());
+            } else {
+                System.out.println("File already exist");
+            }
+        } catch (IOException e) {
+            System.out.println("An error occured");
+            e.printStackTrace();
+        }
+    }
 
-    public static void writeMethod  (String text) throws IOException {
+
+
+   /* public static void writeMethod  (String text) throws IOException {
        BufferedWriter output = null;
         try {
             File file = new File("dane.txt");
@@ -22,7 +37,8 @@ public class SaveYourSearch {
                 output.close();
             }
         }
-    }
+    }*/
+
 }
 
 

@@ -26,9 +26,6 @@ public class Menu {
                     case 2:
                         SingInForm.singInForm();
                         break;
-                    case 3:
-                        FreeUserform.freeUserform();
-                        break;
                     default:
                         System.out.println("Błąd");
 
