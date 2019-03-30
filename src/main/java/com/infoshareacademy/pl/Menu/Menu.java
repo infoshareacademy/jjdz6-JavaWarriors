@@ -1,7 +1,6 @@
 package com.infoshareacademy.pl.Menu;
 
 import twitter4j.TwitterException;
-
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -14,8 +13,7 @@ public class Menu {
         System.out.println("****************************");
         System.out.println("Wybierz z menu: ");
         Scanner scanner;
-        boolean isNot = true;
-        while (isNot) {
+        while (true) {
             scanner = new Scanner(System.in);
             try {
                 switch (scanner.nextInt()) {
