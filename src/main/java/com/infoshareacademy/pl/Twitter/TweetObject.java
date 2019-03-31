@@ -1,6 +1,6 @@
 package com.infoshareacademy.pl.Twitter;
 
-public class Tweet {
+public class TweetObject {
     String createdAt;
     Long id;
     String text;
@@ -37,7 +37,14 @@ public class Tweet {
     public void setUser(User user) {
         this.user = user;
     }
-    //    public String getPlace() {
-//        return place;
+
+    @Override
+    public String toString() {
+        return "createdAt='" + createdAt + '\'' +
+                ", id=" + id +
+                ", text='" + text + '\'' +
+                ", user=" + user;
+    }
+
 //    }
 }

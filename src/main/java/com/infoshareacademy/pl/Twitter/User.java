@@ -41,4 +41,16 @@ public class User {
     public Integer getFriendsCount() {
         return friendsCount;
     }
+
+    @Override
+    public String toString() {
+        return  "id=" + id +
+                ", name='" + name + '\'' +
+                ", screenName='" + screenName + '\'' +
+                ", location='" + location + '\'' +
+                ", description='" + description + '\'' +
+                ", verified=" + verified +
+                ", followersCount=" + followersCount +
+                ", friendsCount=" + friendsCount;
+    }
 }
